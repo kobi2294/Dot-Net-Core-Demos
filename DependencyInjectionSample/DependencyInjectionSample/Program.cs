@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using DependencyInjectionSample.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace DependencyInjectionSample
 {
@@ -13,6 +16,10 @@ namespace DependencyInjectionSample
     {
         public static void Main(string[] args)
         {
+            var myText = File.ReadAllText("Models/people.json");
+            var data = JsonConvert.DeserializeObject<Person[]>(myText);
+
+
             CreateHostBuilder(args).Build().Run();
         }
 

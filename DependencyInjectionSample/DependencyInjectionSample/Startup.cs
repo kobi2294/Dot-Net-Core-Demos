@@ -35,6 +35,18 @@ namespace DependencyInjectionSample
             {
                 endpoints.MapControllers();
             });
+
+            app.Use(async (context, next) =>
+            {
+                await context.Response.WriteAsync("<h1>Header</h1>");
+                await next.Invoke();
+                await context.Response.WriteAsync("<h1>Footer</h1>");
+            });
+
+            app.Run(async context =>
+            {
+                await context.Response.WriteAsync("Live from Hod Hasharon, It's ASP.net core 3!");
+            });
         }
     }
 }
