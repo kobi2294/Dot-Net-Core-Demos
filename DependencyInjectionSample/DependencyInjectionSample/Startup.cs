@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DependencyInjectionSample.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -28,24 +29,17 @@ namespace DependencyInjectionSample
             }
 
             app.UseRouting();
-
             app.UseAuthorization();
+            app.UseTimestamp();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
 
-            app.Use(async (context, next) =>
+            app.Run(async ctxt =>
             {
-                await context.Response.WriteAsync("<h1>Header</h1>");
-                await next.Invoke();
-                await context.Response.WriteAsync("<h1>Footer</h1>");
-            });
-
-            app.Run(async context =>
-            {
-                await context.Response.WriteAsync("Live from Hod Hasharon, It's ASP.net core 3!");
+                await ctxt.Response.WriteAsync("Hello");
             });
         }
     }
