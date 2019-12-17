@@ -16,7 +16,7 @@ namespace DependencyInjectionSample.Middleware
             _next = next;
         }
 
-        public async Task InvokeAsync(HttpContext context)
+        public async Task Invoke(HttpContext context)
         {
             var now = DateTime.Now;
             context.Items.Add("Now", now);

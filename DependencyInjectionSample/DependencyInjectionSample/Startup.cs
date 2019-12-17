@@ -20,10 +20,7 @@ namespace DependencyInjectionSample
         {
             services.AddControllers();
 
-            services.Add(new ServiceDescriptor(
-                typeof(IPeopleRepositoryService), 
-                typeof(PeopleRepositoryService), 
-                ServiceLifetime.Singleton));
+            services.AddSingleton<IPeopleRepositoryService, PeopleRepositoryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
