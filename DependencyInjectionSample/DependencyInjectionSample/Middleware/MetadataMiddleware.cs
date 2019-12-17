@@ -16,14 +16,17 @@ namespace DependencyInjectionSample.Middleware
             _peopleService = peopleService;
         }
 
-        public async Task Invoke(HttpContext context, IPeopleRepositoryService peopleService)
+        public async Task Invoke(HttpContext context, IMetadataWriter writer)
         {
             var header = context.Request.Headers;
             var accept = header["Accept"].ToString();
             var userAgent = header["User-Agent"].ToString();
             var host = header["Host"].ToString();
             var peopleCount = (await _peopleService.GetAllPeople()).Length;
-            var peopleCount2 = (await _peopleService.GetAllPeople()).Length;
+            writer.Write(accept, userAgent, host, peopleCount);
+
+            await _next(context);
+
         }
     }
 

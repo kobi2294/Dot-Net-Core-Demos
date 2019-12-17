@@ -20,10 +20,12 @@ namespace DependencyInjectionSample.Controllers
             _peopleService = peopleService;
         }
 
+
         [HttpGet]
-        public async Task<ActionResult<Person[]>> GetAll()
+        public async Task<ActionResult<Person[]>> GetAll([FromServices] IMetadataService metadata)
         {
             var data = await _peopleService.GetAllPeople();
+            var peopleCount = metadata.PeopleCount;
             return Ok(data);
         }
     }

@@ -21,6 +21,10 @@ namespace DependencyInjectionSample
             services.AddControllers();
 
             services.AddSingleton<IPeopleRepositoryService, PeopleRepositoryService>();
+
+            services.AddScoped<MetadataService>();
+            services.AddScoped<IMetadataService>(provider => provider.GetRequiredService<MetadataService>());
+            services.AddScoped<IMetadataWriter>(provider => provider.GetRequiredService<MetadataService>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
