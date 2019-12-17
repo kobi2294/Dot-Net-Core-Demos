@@ -28,7 +28,7 @@ namespace DependencyInjectionSample.Middleware
 
     public static class TimestampMiddlewareExtension
     {
-        public static IApplicationBuilder UseTimestamp(this IApplicationBuilder builder)
+        public static IApplicationBuilder UseTimestampMiddleware(this IApplicationBuilder builder)
         {
             return builder.UseMiddleware<TimestampMiddleware>();
         }

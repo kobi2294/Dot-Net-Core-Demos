@@ -33,7 +33,8 @@ namespace DependencyInjectionSample
 
             app.UseRouting();
             app.UseAuthorization();
-            app.UseTimestamp();
+            app.UseTimestampMiddleware();
+            app.UserMetadataMiddleware();
 
             app.UseEndpoints(endpoints =>
             {

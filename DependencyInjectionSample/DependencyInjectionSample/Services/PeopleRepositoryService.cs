@@ -13,9 +13,12 @@ namespace DependencyInjectionSample.Services
         private const string _filePath = "Models/people.json";
         private Lazy<Task<Person[]>> _loader;
 
+        public Guid Id { get; private set; }
+
         public PeopleRepositoryService()
         {
             _loader = new Lazy<Task<Person[]>>(_load);
+            Id = Guid.NewGuid();
         }
 
         private async Task<Person[]> _load()
