@@ -16,10 +16,6 @@ namespace DependencyInjectionSample
     {
         public static void Main(string[] args)
         {
-            var myText = File.ReadAllText("Models/people.json");
-            var data = JsonConvert.DeserializeObject<Person[]>(myText);
-
-
             CreateHostBuilder(args).Build().Run();
         }
 
