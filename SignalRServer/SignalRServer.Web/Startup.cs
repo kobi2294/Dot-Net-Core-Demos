@@ -45,8 +45,8 @@ namespace SignalRServer.Web
            
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
                 endpoints.MapHub<ChartHub>("/chart");
+                endpoints.MapControllers();
             });
         }
     }
