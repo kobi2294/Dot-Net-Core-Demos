@@ -11,14 +11,18 @@ export class SignalRService {
 
   constructor() { }
 
-  public connect() {
+  public async connect() : Promise<void> {
     this.hubConnection = new SignalR.HubConnectionBuilder()
                             .withUrl('http://localhost:5001/chart')
                             .build();
-    this.hubConnection
-        .start()
-        .then(() => console.log('Connection started'))
-        .catch(err => console.log('Error while creating connection: ' + err))
+
+    try {
+      await this.hubConnection.start();
+      console.log('Connection started successfully');  
+    }
+    catch (err) {
+      console.log('Error while creating connection: ' + err);
+    }
   }
 
   public addListener() {

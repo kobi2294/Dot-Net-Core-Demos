@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   constructor(private signalR: SignalRService){}
 
-  connect() {
-    this.signalR.connect();
+  async connect() {
+    await this.signalR.connect();
   }
 }
