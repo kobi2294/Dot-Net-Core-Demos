@@ -12,6 +12,9 @@ export class AppComponent {
   async connect() {
     await this.signalR.connect();
     this.signalR.addListener();
+    this.signalR.data.subscribe(data => {
+      console.log(data);
+    })
   }
 
   

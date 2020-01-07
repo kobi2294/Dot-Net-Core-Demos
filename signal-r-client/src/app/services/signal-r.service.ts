@@ -1,13 +1,18 @@
 import { ChartModel } from './../models/chart-model';
 import { Injectable } from '@angular/core';
 import * as SignalR from '@aspnet/signalr';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SignalRService {
-  public data: ChartModel[];
   private hubConnection: SignalR.HubConnection;
+
+  private _data = new BehaviorSubject<ChartModel[]>([]);  
+  public get data(): Observable<ChartModel[]>  {
+    return this._data.asObservable();
+  }
 
   constructor() { }
 
@@ -27,8 +32,8 @@ export class SignalRService {
 
   public addListener() {
     this.hubConnection.on('chart-data', (data) => {
-      this.data = data;
-      console.log(data);
+      this._data.next(data);
     });
   }
+
 }
