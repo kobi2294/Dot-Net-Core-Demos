@@ -36,4 +36,13 @@ export class SignalRService {
     });
   }
 
+  public async randomizeAll() {
+    await this.hubConnection.invoke('randomizeall');
+  }
+
+  public async randomizeMe() {
+    await this.hubConnection.invoke('randomizeme');
+  }
+
+
 }

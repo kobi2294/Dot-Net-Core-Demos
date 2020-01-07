@@ -22,5 +22,13 @@ export class AppComponent implements OnInit {
     this.signalR.addListener();
     this.data$ = this.signalR.data;
   }
+
+  async randomizeAll() {
+    await this.signalR.randomizeAll();
+  }
+
+  async randomizeMe() {
+    await this.signalR.randomizeMe();
+  }
   
 }
