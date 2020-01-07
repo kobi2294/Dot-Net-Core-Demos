@@ -9,7 +9,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class SignalRService {
   private hubConnection: SignalR.HubConnection;
 
-  private _data = new BehaviorSubject<ChartModel[]>([]);  
+  private _data = new BehaviorSubject<ChartModel[]>(null);  
   public get data(): Observable<ChartModel[]>  {
     return this._data.asObservable();
   }

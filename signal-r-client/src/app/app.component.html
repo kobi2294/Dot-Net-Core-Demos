@@ -1,1 +1,6 @@
-<button (click)="connect()">Start Connection</button>
+<div *ngIf="(data$ | async) as data">
+    <canvas baseChart 
+        [datasets]="data"
+        [chartType]="'bar'"
+        ></canvas>
+</div>
