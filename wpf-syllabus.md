@@ -170,7 +170,7 @@
 * We saw how to set easing functions to each keyframe
 
 
-# Day 03 - Layout Panels and Resources
+# Day 03 - Dependency Properties and Data Binding
 ### Projects:
 |     |     |
 | --- | --- |
@@ -224,7 +224,7 @@
 * We saw how to create binding "Programatically" in C#
 * Finally we saw a cool example of how to implement a sophisticated template for `ProgressBar` using `MultiBinding` cobined with `TemplatedParent` source
 
-# Day 04 - Layout Panels and Resources
+# Day 04 - Items Controls and TPL
 ### Projects:
 |     |     |
 | --- | --- |
